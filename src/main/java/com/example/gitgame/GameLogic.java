@@ -1,8 +1,10 @@
+package com.example.gitgame;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.Random;
+
 public class GameLogic {
 private static boolean gameRunning = true;
 private static ArrayList<Integer> indices = new ArrayList<>();
