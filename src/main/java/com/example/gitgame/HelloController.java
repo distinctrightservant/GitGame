@@ -32,11 +32,11 @@ public class HelloController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
-   public void initialize(String answer1,String answer2, String answer3, String answer4,String Question){
-        this.Question.setText(Question);
-        this.answer1.setText(answer1);
-        this.answer2.setText(answer2);
-        this.answer3.setText(answer3);
-        this.answer4.setText(answer4);
+   public void  initialize(){
+        this.Question.setText(GuiLogic.getQuestion());
+        this.answer1.setText(GuiLogic.getAnswer1());
+        this.answer2.setText(GuiLogic.getAnswer2());
+        this.answer3.setText(GuiLogic.getAnswer3());
+        this.answer4.setText(GuiLogic.getAnswer4());
    }
 }
