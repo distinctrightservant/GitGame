@@ -9,34 +9,67 @@ public class HelloController {
     @FXML
     private Label welcomeText;
     @FXML
-    private Label welcome;
+    private  Button answer1;
+    @FXML
+    private  Button answer2;
+    @FXML
+    private  Button answer3;
+    @FXML
+    private  Button answer4;
+    @FXML
+    private  Label Question;
+    @FXML
+    private  Button Submit;
+    @FXML
+    private  Label percentage;
 
+    private Button activeButton;
     @FXML
-    private Button answer1;
-    @FXML
-    private Button answer2;
-    @FXML
-    private Button answer3;
-    @FXML
-    private Button answer4;
-    @FXML
-    private Label Question;
-    @FXML
-    protected Boolean isOne(ActionEvent button){
-        Button clicked = (Button) button.getSource();
-        return answer1.getText().equals(clicked.getText());
-        //return if the button that was clicked was answer 1
+    protected void buttonClicked(ActionEvent button){
+        resetColors();
+        Button buttonclicked = (Button) button.getSource();
+        activeButton = buttonclicked;
+        String curQuest = GuiLogic.getQuestion();
+        if (curQuest.contains("_")) {
+            curQuest = curQuest.replace("_", activeButton.getText());
+            Question.setText(curQuest);
+        }
+        buttonclicked.setStyle("-fx-background-color: #fff");
     }
+    @FXML
+    protected void submitClicked(ActionEvent button){
+        Button submitted = (Button) button.getSource();
+        GuiLogic.checkAnswer(activeButton.getText());
+        playAround();
+        System.out.println("play a round?");
+    }
+    protected void playAround(){
+        GuiLogic.Guirunning();
+        resetColors();
+        Question.setText(GuiLogic.getQuestion());
+        answer1.setText(GuiLogic.getAnswer1());
+        answer2.setText(GuiLogic.getAnswer2());
+        answer3.setText(GuiLogic.getAnswer3());
+        answer4.setText(GuiLogic.getAnswer4());
+    }
+   public void initialize(){
+       GuiLogic.generateTerms();
+       GuiLogic.stuffthing();
+        GuiLogic.Guirunning();
+        resetColors();
+        Question.setText(GuiLogic.getQuestion());
+        answer1.setText(GuiLogic.getAnswer1());
+        answer2.setText(GuiLogic.getAnswer2());
+        answer3.setText(GuiLogic.getAnswer3());
+        answer4.setText(GuiLogic.getAnswer4());
+        //Change color instead of changing the text
+        percentage.setText(GuiLogic.getPercentage());
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-   public void  initialize(){
-        this.Question.setText(GuiLogic.getQuestion());
-        this.answer1.setText(GuiLogic.getAnswer1());
-        this.answer2.setText(GuiLogic.getAnswer2());
-        this.answer3.setText(GuiLogic.getAnswer3());
-        this.answer4.setText(GuiLogic.getAnswer4());
+   }
+   public void resetColors(){
+       answer1.setStyle("-fx-background-color: #d3d3d3; -fx-text-fill: black; -fx-font-size: 16px;");
+       answer2.setStyle("-fx-background-color: #d3d3d3; -fx-text-fill: black; -fx-font-size: 16px;");
+       answer3.setStyle("-fx-background-color: #d3d3d3; -fx-text-fill: black; -fx-font-size: 16px;");
+       answer4.setStyle("-fx-background-color: #d3d3d3; -fx-text-fill: black; -fx-font-size: 16px;");
    }
 }
