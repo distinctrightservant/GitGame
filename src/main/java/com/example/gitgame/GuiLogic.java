@@ -7,8 +7,9 @@ import java.util.Random;
 
 public class GuiLogic {
     private static ArrayList<Integer> indices = new ArrayList<>();
-    private static ArrayList<Integer> incindices = new ArrayList<>();
-    private static int max = Vocab.getMap().size();
+    private static double numRight = 0;
+    private static double numdone = 0;
+    private static int max;
     private static int min = 0;
     public static String getQuestion() {
         return Question;
@@ -30,19 +31,8 @@ public class GuiLogic {
         return answer4;
     }
 
-    public static String getPercentage() {
-        if(percentage <0.7){
-            return "Red";
-        }
-        else if(percentage >= 0.9){
-            return "Green";
-        }
-        else if(percentage >0.7 & percentage <0.8){
-            return "Orange";
-        }
-        else{
-            return "Blue";
-        }
+    public static double getPercentage() {
+        return percentage;
     }
 
     private static String Question;
@@ -50,10 +40,11 @@ public class GuiLogic {
     private static String answer2;
     private static String answer3;
     private static String answer4;
-    private static float percentage;
+    private static double percentage;
+    private static Integer result;
 
     public static void Guirunning(){
-        Integer result = (int) ((Math.random() * (max - min) )+ 1);
+        result = (int) (Math.random() * (max - min)) + min;
         if (indices.contains(result)) {
             Question = Vocab.getIndex().get(result);
             answer1 = Vocab.getMap().get(Vocab.getIndex().get(result));
@@ -83,25 +74,29 @@ public class GuiLogic {
                 }
             }
     }
-    percentage = (float) incindices.size() / indices.size();
+    percentage = numRight / numdone;
     indices.remove(result);
         }
         public static Boolean checkAnswer(String answer){
             if(answer.equals(answer1)){
+                numRight +=1;
+                numdone+=1;
                 return true;
             }
+            numdone+=1;
             return false;
         }
-        public static void stuffthing(){
+        public static void generateIndex(){
             for (int i = 1; i < Vocab.getMap().size(); i++) {
                 indices.add(i);
+                max = Vocab.getMap().size();
             }
         }
     public static void generateTerms(){
 
         Vocab blame = new Vocab("blame","The _ feature in Git describes the last modification to each line of a file, which generally displays the revision, author and time. This is helpful, for example, in tracking down when a feature was added, or which commit led to a particular bug.");
         Vocab branch = new Vocab("branch","A(n) _ is a parallel version of a repository. It is contained within the repository, but does not affect the primary or main branch allowing you to work freely without disrupting the \"live\" version. When you've made the changes you want to make, you can merge your branch back into the main branch to publish your changes.");
-        Vocab clone = new Vocab("clone", "A(n) - is a copy of a repository that lives on your computer instead of on a website's server somewhere, or the act of making that copy. When you make a clone, you can edit the files in your preferred editor and use Git to keep track of your changes without having to be online. The repository you cloned is still connected to the remote version so that you can push your local changes to the remote to keep them synced when you're online.");
+        Vocab clone = new Vocab("clone", "A(n) _ is a copy of a repository that lives on your computer instead of on a website's server somewhere, or the act of making that copy. When you make a clone, you can edit the files in your preferred editor and use Git to keep track of your changes without having to be online. The repository you cloned is still connected to the remote version so that you can push your local changes to the remote to keep them synced when you're online.");
         Vocab collaborator = new Vocab("collaborator","A(n) _ is a person with read and write access to a repository who has been invited to contribute by the repository owner.");
         Vocab commit = new Vocab("commit", "A(n) _, or \"revision\", is an individual change to a file (or set of files). When you make a commit to save your work, Git creates a unique ID (a.k.a. the \"SHA\" or \"hash\") that allows you to keep record of the specific changes committed along with who made them and when. Commits usually contain a commit message which is a brief description of what changes were made.");
         Vocab commitMessage = new Vocab("commit message","Short, descriptive text that accompanies a commit and communicates the change the commit is introducing.");

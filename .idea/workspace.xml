@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c7a8a03-eb99-4cac-9405-c4377e013dc0" name="Changes" comment="Second one">
+    <list default="true" id="4c7a8a03-eb99-4cac-9405-c4377e013dc0" name="Changes" comment="the question is not changing even when it should be PLEZ HELP">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/download.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gitgame/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gitgame/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gitgame/GuiLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gitgame/GuiLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gitgame/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gitgame/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gitgame/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gitgame/hello-view.fxml" afterDir="false" />
@@ -96,7 +96,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693845049190</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="third one">
+      <option name="closed" value="true" />
+      <created>1694019217028</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694019217028</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +121,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First one" />
     <MESSAGE value="Second one" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second one" />
+    <MESSAGE value="third one" />
+    <option name="LAST_COMMIT_MESSAGE" value="third one" />
   </component>
 </project>

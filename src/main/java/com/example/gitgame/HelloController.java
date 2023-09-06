@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 public class HelloController {
     @FXML
@@ -22,6 +23,8 @@ public class HelloController {
     private  Button Submit;
     @FXML
     private  Label percentage;
+    @FXML
+    private ImageView meme;
 
     private Button activeButton;
     @FXML
@@ -41,7 +44,6 @@ public class HelloController {
         Button submitted = (Button) button.getSource();
         GuiLogic.checkAnswer(activeButton.getText());
         playAround();
-        System.out.println("play a round?");
     }
     protected void playAround(){
         GuiLogic.Guirunning();
@@ -51,10 +53,22 @@ public class HelloController {
         answer2.setText(GuiLogic.getAnswer2());
         answer3.setText(GuiLogic.getAnswer3());
         answer4.setText(GuiLogic.getAnswer4());
+        if(GuiLogic.getPercentage() <0.7){
+            percentage.setStyle("-fx-background-color: #FF0000; -fx-text-fill: black; -fx-font-size: 16px;");
+        }
+        else if(GuiLogic.getPercentage() >= 0.9){
+            percentage.setStyle("-fx-background-color: #008000; -fx-text-fill: black; -fx-font-size: 16px;");
+        }
+        else if(GuiLogic.getPercentage() >0.7 & GuiLogic.getPercentage() <0.8){
+            percentage.setStyle("-fx-background-color: #FFA500; -fx-text-fill: black; -fx-font-size: 16px;");
+        }
+        else{
+            percentage.setStyle("-fx-background-color: #0000FF; -fx-text-fill: black; -fx-font-size: 16px;");
+        }
     }
    public void initialize(){
-       GuiLogic.generateTerms();
-       GuiLogic.stuffthing();
+        GuiLogic.generateTerms();
+        GuiLogic.generateIndex();
         GuiLogic.Guirunning();
         resetColors();
         Question.setText(GuiLogic.getQuestion());
@@ -62,8 +76,7 @@ public class HelloController {
         answer2.setText(GuiLogic.getAnswer2());
         answer3.setText(GuiLogic.getAnswer3());
         answer4.setText(GuiLogic.getAnswer4());
-        //Change color instead of changing the text
-        percentage.setText(GuiLogic.getPercentage());
+        percentage.setStyle("-fx-background-color: #FF0000; -fx-text-fill: black; -fx-font-size: 16px;");
 
    }
    public void resetColors(){
